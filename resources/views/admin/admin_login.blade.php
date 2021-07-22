@@ -13,6 +13,11 @@
   <link rel="stylesheet" href="{{ url ( 'plugins/icheck-bootstrap/icheck-bootstrap.min.css') }} ">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ url ('css/admin_css/adminlte.min.css') }} ">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+  <script src="{{ url ( 'plugins/jquery/jquery.min.js') }}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+  
 </head>
 <body class="hold-transition login-page">
 <div class="login-box">
@@ -23,10 +28,42 @@
     </div>
     <div class="card-body">
       <p class="login-box-msg">Sign in to start your session</p>
+      @if (Session::has('error_message'))
+          <script>
+                toastr.options = {
+                  "closeButton": false,
+                  "debug": false,
+                  "newestOnTop": false,
+                  "progressBar": false,
+                  "positionClass": "toast-top-center",
+                  "preventDuplicates": false,
+                  "onclick": null,
+                  "showDuration": "300",
+                  "hideDuration": "1000",
+                  "timeOut": "5000",
+                  "extendedTimeOut": "1000",
+                  "showEasing": "swing",
+                  "hideEasing": "linear",
+                  "showMethod": "fadeIn",
+                  "hideMethod": "fadeOut"
+                }
+            toastr.error('Invalid Email or Password')
+          </script>
 
+      @endif
+      @if ($errors->any())
+          <div class="alert alert-danger">
+              <ul>
+                  @foreach ($errors->all() as $error)
+                      <li>{{ $error }}</li>
+                  @endforeach
+              </ul>
+          </div>
+      @endif
       <form action="{{url('admin/')}}" method="post">
+        @csrf
         <div class="input-group mb-3">
-          <input type="email" class="form-control" placeholder="Email">
+          <input name="email" id="email" type="text" class="form-control" placeholder="Email">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>
@@ -34,7 +71,7 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" class="form-control" placeholder="Password">
+          <input type="password" name="password" id="password" class="form-control" placeholder="Password">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
@@ -70,5 +107,7 @@
 <script src="{{ url ( 'plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 <!-- AdminLTE App -->
 <script src="{{ url ( 'js/admin_js/adminlte.min.js') }}"></script>
+
+
 </body>
 </html>

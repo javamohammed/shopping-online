@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Shopping Onlie 3 | Dashboard</title>
-
+  <title>Shopping Onlie | Dashboard</title>
+  <link rel="icon" href="{{ url ( 'images/admin_images/AdminLTELogo.png')}}" type="image/png" sizes="16x16">
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome Icons -->
@@ -66,5 +66,6 @@
 <script src="{{ url ( 'js/admin_js/demo.js') }}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{ url ( 'js/admin_js/pages/dashboard2.js') }}"></script>
+<script src="{{ url ( 'js/admin_js/admin_scripts.js') }}"></script>
 </body>
 </html>
