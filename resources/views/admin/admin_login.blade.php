@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Sopping Online | Log in</title>
+  <link rel="icon" href="{{ url ( 'images/admin_images/AdminLTELogo.png')}}" type="image/png" sizes="16x16">
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -52,7 +53,7 @@
 
       @endif
       @if ($errors->any())
-          <div class="alert alert-danger">
+          <div class="alert alert-danger" style="margin: 10px;width: 50%;">
               <ul>
                   @foreach ($errors->all() as $error)
                       <li>{{ $error }}</li>

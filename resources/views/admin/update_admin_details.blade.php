@@ -18,7 +18,7 @@
                 <div class="col-md-12">
                     <div class="card card-primary">
                     <div class="card-header">
-                      <h3 class="card-title">Update Password</h3>
+                      <h3 class="card-title">Update Admin Details</h3>
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
@@ -40,31 +40,43 @@
 
                         </div>
                     @endif
-                    <form method="POST" action="{{ url('/admin/update-current-pwd')}}" name="udpatePasswordForm" id="udpatePasswordForm">
+                    @if ($errors->any())
+                    <div class="alert alert-danger" style="margin: 10px;width: 50%;">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+                <form method="POST" enctype="multipart/form-data" action="{{ url('/admin/update-admin-details')}}" name="updateAdminDetails" id="updateAdminDetailsForm">
                       @csrf
                       <div class="card-body">
                         <div class="form-group">
+                            <label for="exampleInputEmail1">Admin Name</label>
+                            <input type="text" name="name" class="form-control" id="name" value="{{$adminDetails->name}}">
+                          </div>  
+                        <div class="form-group">
                           <label for="exampleInputEmail1">Admin Email</label>
-                          <input type="email" name="email" class="form-control" id="email" readonly="" value="{{$adminDetails->email}}">
+                          <input type="email" name="email" class="form-control" id="email" readonly value="{{$adminDetails->email}}">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Admin Type</label>
-                            <input type="text" name="user_type" class="form-control" id="user_type" readonly="" value="{{$adminDetails->type}}">
-                          </div>
-                        <div class="form-group">
-                          <label for="exampleInputPassword1">Current Password</label>
-                          <input type="password" class="form-control" name="current_password" id="current_password" placeholder="Password" required>
-                          <span id="error_current_password" style="font-size: 13px"></span>
+                            <input type="text" name="user_type" class="form-control" id="user_type" readonly  value="{{$adminDetails->type}}">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputPassword1">New Password</label>
-                            <input type="password" class="form-control" name="new_password" id="new_password" placeholder="Password" required>
+                            <label for="exampleInputEmail1">Mobile</label>
+                            <input type="text" name="mobile" class="form-control" id="mobile"  value="{{$adminDetails->mobile}}">
                         </div>
                         <div class="form-group">
-                        <label for="exampleInputPassword1">Confirm Password</label>
-                        <input type="password" class="form-control" name="confirm_password" id="confirm_password" placeholder="Password" required>
+                            <label for="exampleInputEmail1">Image</label>
+                            <input type="file" name="image" class="form-control" id="image" accept="image/*" >
+                            @if (!empty($adminDetails->image))
+                            <img class="rounded-circle" style="margin-top: 5px" alt="100x100" width="100" height="100" src="{{url('images/admin_images/admin_photos/'.$adminDetails->image)}}"
+                            data-holder-rendered="true">
+                                <input type="hidden" value="{{$adminDetails->image}}" name="current_image" />
+                            @endif
                         </div>
-                    
                        
                       </div>
                       <!-- /.card-body -->
