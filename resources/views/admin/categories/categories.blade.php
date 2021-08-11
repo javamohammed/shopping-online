@@ -19,12 +19,13 @@
           <div class="col-md-12">
               <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Sections:</h3>
+                <h3 class="card-title">Categories:</h3>
               </div>
               <div class="card">
                 <!-- /.card-header -->
                 <div class="card-body">
-                  <table id="sections" class="table table-bordered table-striped">
+                  <a href="{{url('admin/add-edit-category')}}" style="display: inline; float: right; font-size: 2rem"><i class="fas fa-plus"></i></a>
+                  <table id="categories" class="table table-bordered table-striped">
                     <thead>
                     <tr>
                       <th>ID</th>
@@ -33,15 +34,15 @@
                     </tr>
                     </thead>
                     <tbody>
-                      @foreach ($sections as $section)
+                      @foreach ($categories as $category)
                         <tr>
-                          <td>{{$section->id}}</td>
-                          <td>{{$section->name}}</td>
+                          <td>{{$category->id}}</td>
+                          <td>{{$category->category_name}}</td>
                           <td>
-                            @if ($section->status == 1 )
-                              <i id="{{$section->id}}" class="fas fa-check-circle active change-status-section" style="color: green; cursor: pointer;"></i>
+                            @if ($category->status == 1 )
+                              <i id="{{$category->id}}-category" class="fas fa-check-circle active change-status-category" style="color: green; cursor: pointer;"></i>
                             @else
-                            <i id="{{$section->id}}" class="fas fa-ban inactive change-status-section" style="color: red; cursor: pointer;"></i> 
+                            <i id="{{$category->id}}-category" class="fas fa-ban inactive change-status-category" style="color: red; cursor: pointer;"></i> 
                             @endif
                           </td>
                         </tr>

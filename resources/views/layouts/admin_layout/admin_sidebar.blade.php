@@ -74,7 +74,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ url('/admin/dashboard')}}" class="nav-link {{ $page == 'categories' ? 'active' : ''}}">
+            <a href="{{ url('/admin/categories')}}" class="nav-link {{ $page == 'categories' ? 'active' : ''}}">
               <i class="fa fa-list-alt" aria-hidden="true"></i>
               <p>Categories</p>
             </a>

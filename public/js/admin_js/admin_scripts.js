@@ -33,3 +33,20 @@ $('.change-status-section').on('click',e => {
         }
     })
    });
+
+   $('.change-status-category').on('click',e => {
+    let id = event.target.id
+    let status = $(`#${id}`).hasClass('active') ;
+    $.ajax({
+        type: 'post',
+        url:'/shopping-online/public/admin/change-status-category',
+        data: {status: status === true ? 0 : 1, id: id},
+        success: function(data){
+          if (status == true) {
+            $(`#${id}`).removeClass('fas fa-check-circle active ').addClass('fas fa-ban inactive').css('color', 'red')
+        }else{
+            $(`#${id}`).removeClass('fas fa-ban inactive').addClass('fas fa-check-circle active ').css('color', 'green')
+        }
+        }
+    })
+   });

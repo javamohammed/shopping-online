@@ -13,6 +13,12 @@
   <link rel="stylesheet" href="{{ url ('plugins/overlayScrollbars/css/OverlayScrollbars.min.css')}}">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ url ( 'css/admin_css/adminlte.min.css')}}">
+
+  <!-- Tempusdominus Bootstrap 4 -->
+  <link rel="stylesheet" href="{{ url ('plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css')}}">
+   <!-- Select2 -->
+   <link rel="stylesheet" href="{{ url ('plugins/select2/css/select2.min.css')}}">
+  
 </head>
 <body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 <div class="wrapper">
@@ -68,6 +74,8 @@
 <script src="{{ url ('plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
 <script src="{{ url ('plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
 <script src="{{ url ('plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
+<!-- Select2 -->
+<script src="{{ url ('plugins/select2/js/select2.full.min.js') }}"></script>
 <script src="{{ url ('plugins/datatables-buttons/js/dataTables.buttons.min.js') }}"></script>
 <script src="{{ url ('plugins/datatables-buttons/js/buttons.bootstrap4.min.js') }}"></script>
 <script src="{{ url ('plugins/jszip/jszip.min.js') }}"></script>
@@ -86,11 +94,21 @@
 
 <script>
   $(function () {
-    $("#example1").DataTable({
+
+     //Initialize Select2 Elements
+    $('.select2').select2()
+
+    $("#sections").DataTable({
       "responsive": true, "lengthChange": false, "autoWidth": false,
       "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    }).buttons().container().appendTo('#sections_wrapper .col-md-6:eq(0)');
+
+    $("#categories").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+    }).buttons().container().appendTo('#categories_wrapper .col-md-6:eq(0)');
   });
+
 </script>
 </body>
 </html>
