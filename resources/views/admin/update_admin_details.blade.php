@@ -41,14 +41,14 @@
                         </div>
                     @endif
                     @if ($errors->any())
-                    <div class="alert alert-danger" style="margin: 10px;width: 50%;">
-                                <ul>
-                                    @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
+                          <div class="alert alert-danger" style="margin: 10px;width: 50%;">
+                                      <ul>
+                                          @foreach ($errors->all() as $error)
+                                              <li>{{ $error }}</li>
                                     @endforeach
                                 </ul>
                             </div>
-                        @endif
+                      @endif
                 <form method="POST" enctype="multipart/form-data" action="{{ url('/admin/update-admin-details')}}" name="updateAdminDetails" id="updateAdminDetailsForm">
                       @csrf
                       <div class="card-body">

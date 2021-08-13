@@ -25,6 +25,15 @@
                 <!-- /.card-header -->
                 <div class="card-body">
                   <a href="{{url('admin/add-edit-category')}}" style="display: inline; float: right; font-size: 2rem"><i class="fas fa-plus"></i></a>
+                  @if (Session::has("success_message"))
+                      <div class="alert alert-success alert-dismissible fade show" role="alert" style="margin-top: 10px">
+                        {{Session::get('success_message')}}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+
+                      </div>
+                  @endif
                   <table id="categories" class="table table-bordered table-striped">
                     <thead>
                     <tr>
